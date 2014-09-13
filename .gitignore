@@ -5,6 +5,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Developer
+.idea
+
 # Distribution / packaging
 .Python
 env/
@@ -46,6 +49,14 @@ coverage.xml
 
 # Django stuff:
 *.log
+
+# Frontend stuff
+node_modules
+temp
+dist
+.sass-cache
+static/bower_components
+.tmp/
 
 # Sphinx documentation
 docs/_build/

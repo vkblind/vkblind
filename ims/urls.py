@@ -6,5 +6,5 @@ from views import view_messages
 
 
 urlpatterns = patterns('',
-    url(r'^/$', view_messages),
+    url(r'^$', view_messages),
 )

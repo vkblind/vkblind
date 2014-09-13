@@ -1,16 +1,18 @@
-# -*- coding: utf-8 -*
+# coding: utf-8
 
-from django.shortcuts import render
+from annoying.decorators import render_to
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-
 
 @login_required
+@render_to('index.html')
 def index(request):
-    return render(request, 'index.html')
+    return {}
 
+
+@render_to('accounts/login.html')
 def login(request):
-     return render(request, 'accounts/login.html')
+    return {}
+
 
 def logout(request):
     pass
