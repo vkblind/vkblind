@@ -13,8 +13,10 @@ import os
 
 import dj_database_url
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
 
 # Static asset configuration
 STATIC_ROOT = 'staticfiles'
@@ -61,7 +63,22 @@ INSTALLED_APPS = (
     'vkblind',
     'feeds',
     'ims',
+    'social.apps.django_app.default'
 )
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.vk.VKOAuth2',
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend'
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect'
+)
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -72,6 +89,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = '4549004'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'rvT47HCEhp8fejibEC2t'
 
 ROOT_URLCONF = 'vkblind.urls'
 
