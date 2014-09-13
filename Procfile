@@ -1,0 +1,1 @@
+web: gunicorn vkblind.wsgi --log-file -
