@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^$', 'vkblind.views.index', name='home'),
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^logout/$', logout),
+    url(r'^logout/$', logout, name='logout'),
     url(r'^im/', include(ims.urls)),
     url(r'^feed/', include(feeds.urls)),
     
