@@ -1,6 +1,11 @@
-# -*- coding: utf-8 -*
+# coding: utf-8
 
-from django.shortcuts import render
+from annoying.decorators import render_to
+
+
+@render_to('index.html')
+def index(request):
+    return {}
 
 
 def login(request):
