@@ -1,4 +1,4 @@
 vkblind
 =======
 
-VK for blind peoples
+VK for blind people
