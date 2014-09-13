@@ -5,17 +5,14 @@ from django.contrib import admin
 
 import ims.urls
 import feeds.urls
-from views import login, logout
+from views import login, logout, index
 
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'vkblind.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
+    url('^$', index),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^login/$', login),
-    url(r'^logout/$', logout),
+    url(r'^accounts/login/$', login),
     url(r'^im/', include(ims.urls)),
     url(r'^feed/', include(feeds.urls)),
+    url('', include('social.apps.django_app.urls', namespace='social'))
 )
