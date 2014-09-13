@@ -9,9 +9,7 @@ from views import login, logout
 
 
 urlpatterns = patterns('',
-    # Examples:
     url(r'^$', 'vkblind.views.index', name='home'),
-    # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^login/$', login),

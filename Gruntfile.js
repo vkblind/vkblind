@@ -25,15 +25,15 @@ module.exports = function (grunt) {
         yeoman: yeomanConfig,
         watch: {
             less: {
-                files: 'app/styles',
+                files: 'static/styles',
                 tasks: "less:dev"
             },
             livereload: {
                 files: [
-                    'app/*.html',
+                    'static/*.html',
                     '{.tmp,app}/styles/{,*/}*.css',
                     '{.tmp,app}/scripts/{,*/}*.js',
-                    'app/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+                    'static/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ],
                 tasks: ['livereload']
             }
@@ -101,8 +101,8 @@ module.exports = function (grunt) {
             },
             all: [
                 'Gruntfile.js',
-                'app/scripts/{,*/}*.js',
-                '!app/scripts/vendor/*',
+                'static/scripts/{,*/}*.js',
+                '!static/scripts/vendor/*',
                 'test/spec/{,*/}*.js'
             ]
         },
@@ -128,7 +128,7 @@ module.exports = function (grunt) {
         requirejs: {
             dist: {
                 options: {
-                    baseUrl: 'app/scripts',
+                    baseUrl: 'static/scripts',
                     optimize: 'none',
                     preserveLicenseComments: false,
                     useStrict: true,
@@ -149,7 +149,7 @@ module.exports = function (grunt) {
             }
         },
         useminPrepare: {
-            html: 'app/index.html',
+            html: 'static/index.html',
             options: {
                 dest: 'build'
             }
@@ -166,7 +166,7 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'app/images',
+                        cwd: 'static/images',
                         src: '{,*/}*.{png,jpg,jpeg}',
                         dest: 'build/images'
                     }
@@ -178,7 +178,7 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'app/images',
+                        cwd: 'static/images',
                         src: '{,*/}*.svg',
                         dest: 'build/images'
                     }
@@ -190,7 +190,7 @@ module.exports = function (grunt) {
                 files: {
                     'build/styles/main.css': [
                         '.tmp/styles/{,*/}*.css',
-                        'app/styles/{,*/}*.css'
+                        'static/styles/{,*/}*.css'
                     ]
                 }
             }
