@@ -1,8 +1,8 @@
 require([
-    "jquery",
-    "backbone",
-    "app",
-    "marionette"
+    'jquery',
+    'backbone',
+    'app',
+    'marionette'
 ],
 
 function ($, Backbone, App) {
@@ -17,13 +17,13 @@ function ($, Backbone, App) {
     // All navigation that is relative should be passed through the navigate
     // method, to be processed by the router. If the link has a `data-bypass`
     // attribute, bypass the delegation completely.
-    $(document).on("click", "a:not([data-bypass])", function (e) {
+    $(document).on('click', 'a:not([data-bypass])', function (e) {
         // Get the absolute anchor href.
         var href = {
-                prop: $(this).prop("href"),
-                attr: $(this).attr("href")
+                prop: $(this).prop('href'),
+                attr: $(this).attr('href')
             },
-            root = location.protocol + "//" + location.host + App.root;
+            root = location.protocol + '//' + location.host + App.root;
 
         // Ensure the root is part of the anchor href, meaning it's relative.
         if (href.prop && href.prop.slice(0, root.length) === root) {
@@ -32,7 +32,7 @@ function ($, Backbone, App) {
         }
     });
 
-    $(document).on("click", "a[data-bypass]", function (e) {
+    $(document).on('click', 'a[data-bypass]', function (e) {
         e.preventDefault();
     });
 

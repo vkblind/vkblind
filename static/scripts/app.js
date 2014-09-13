@@ -1,24 +1,26 @@
 define([
-    "underscore",
-    "backbone",
-    "marionette"
+    'underscore',
+    'backbone',
+    'marionette',
+
+    'modules/header',
+    'modules/news'
 ],
 
-function (_, Backbone) {
+function (_, Backbone, Marionette, header, news) {
+    var app = new Backbone.Marionette.Application();
 
-    var App = new Backbone.Marionette.Application();
+    app.addRegions({
+        headerRegion: '#js-app-header',
+        mainRegion: '#js-app-content'
+    });
 
-    // An init function for your main application object
-    App.addInitializer(function () {
+    app.addInitializer(function () {
         this.root = '/';
     });
 
-    // Add as many of these as you like
-    App.addInitializer(function () {
+    app.module('header', header);
+    app.module('news', news);
 
-    });
-
-    // Return the instantiated app (there should only be one)
-    return App;
-
+    return app;
 });

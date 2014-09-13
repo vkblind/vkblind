@@ -1,17 +1,16 @@
 define([
-    "underscore",
-    "backbone"
+    'underscore',
+    'backbone'
 ],
 
 function (_, Backbone) {
-
     return Backbone.Marionette.Layout.extend({
-
-        template: "appSkeleton",
+        template: 'appSkeleton',
 
         regions: {},
 
-        initialize: function (options) {}
+        initialize: function (options) {
 
+        }
     });
 });

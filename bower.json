@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "requirejs": "~2.1.4",
+    "requirejs-tpl": "",
     "bootstrap": "~3.2.0",
     "marionette": "~2.2.0",
     "backbone": "1.1.2",

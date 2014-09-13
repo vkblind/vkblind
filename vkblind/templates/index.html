@@ -1,3 +1,12 @@
-{% block content %}
+{% extends 'base.html' %}
 
+{% block content %}
+    {% if user.is_authenticated %}
+        {{ user.first_name }} {{ user.last_name }}
+    {% endif %}
+
+
+    <div id="js-app-header"></div>
+    <div id="js-app-content"></div>
+    <div id="js-app-footer"></div>
 {% endblock content %}
