@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
+{% block pagetitle %} — Лента новостей{% endblock pagetitle %}
+{% block title %} — Стена группы "{{ group.name }}"{% endblock title %}
+
 {% block content %}
-    <h2>Стена группы "{{ group.name }}"</h2>
     {% for item in items %}
         {% include 'item.html' %}
     {% endfor %}
