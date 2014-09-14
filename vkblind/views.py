@@ -30,6 +30,10 @@ def index(request):
 def login(request):
     return {}
 
+@render_to('profile.html')
+def profile(request, vkuser):
+    return {}
+
 
 def logout(request):
     logout_user(request)
