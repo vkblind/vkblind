@@ -13,7 +13,7 @@ def retry_on_exception(exception, times=10):
                 try:
                     return func(*args, **kwargs)
                 except exception as e:
-                	print "[{0}/{1}] Caught {2}".format(i + 1, times, e)
+                    print "[{0}/{1}] Caught {2}".format(i + 1, times, e)
                     pass
         return decorated
     return decorator
