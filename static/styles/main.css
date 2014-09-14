@@ -13,7 +13,7 @@
 html {
     color: #fff;
     background: #000;
-    font-size: 5em;
+    font-size: 3em;
     line-height: 1.4;
 }
 
@@ -22,16 +22,25 @@ html.inverted {
     background: #fff;
 }
 
+body {
+	margin: 3.5em 0 0 0;
+}
+
 a,
 a:visited {
     color: #fff;
+    text-decoration: none;
+}
+
+.inverted a,
+.inverted a:visited {
+	color: #000;
 }
 
 a:hover,
 a:active {
     color: #000;
     background: #fff;
-    outline: 5px dashed #f00;
 }
 a:active {
     outline-style: solid;
