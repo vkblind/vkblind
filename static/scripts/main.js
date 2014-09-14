@@ -15,7 +15,7 @@ function ($) {
     });
 
     $("#invert").click(function(){
-        if (html.hasClass("inverted") && a.hasClass("inverted")) {
+        if (html.hasClass("inverted")) {
             html.removeClass("inverted");
             localStorage.setItem("is_inverted", false);
         } else {
