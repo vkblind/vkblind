@@ -22,16 +22,20 @@ def view_feed(request):
     owners.extend(friends['items'])
 
     # get posts by owner
-    for owner_id in owners[:2]:
-        wall = request.vk.wall.get(owner_id=owner_id)
+    for owner_id in owners[:10]:
+        wall = request.vk.wall.get(
+            owner_id=owner_id,
+        )
         items.extend(wall['items'])
         time.sleep(0.2)
 
     # prepare items for display
-    items.sort(key=lambda x: x['date'])
+    # items = filter(items, items)
+    items.sort(key=lambda x: x['date'], reverse=True)
     for item in items[:20]:
         item['owner'] = get_owner(request.vk, item['owner_id'])
 
     return {
-        'items': items
+        'items': items,
+        'debug_mode': request.REQUEST.get('debug') == '1'
     }
