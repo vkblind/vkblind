@@ -1,8 +1,10 @@
 {% load json %}
 <li role="article">
+    {% if item.owner.name %}
     <h2>
         {{ item.owner.name }}
     </h2>
+    {% endif %}
         {{ item.text|urlize|linebreaks }}
     {% if debug_mode %}
         <pre class="text" style="font-size:12px">
