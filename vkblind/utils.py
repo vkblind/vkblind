@@ -26,3 +26,15 @@ def get_owner(vk, owner_id):
             owner['name'] = u'{first_name} {last_name}'.format(**owner)
         cache.set(key, owner, 86400)
     return owner
+
+
+def prepare_item_list(vk, items):
+    """
+    Sort, slice and prepare items
+    """
+    items.sort(key=lambda x: x['date'], reverse=True)
+    items = items[:30]
+    items = filter(lambda x: bool(x['text'].strip()), items)
+    for item in items[:20]:
+        item['owner'] = get_owner(vk, item['owner_id'])
+    return items

@@ -3,7 +3,7 @@
 import time
 from annoying.decorators import render_to
 from vkblind.decorators import vk_api
-from vkblind.utils import get_owner
+from vkblind.utils import prepare_item_list
 
 
 @vk_api
@@ -30,12 +30,9 @@ def view_feed(request):
         time.sleep(0.2)
 
     # prepare items for display
-    # items = filter(items, items)
-    items.sort(key=lambda x: x['date'], reverse=True)
-    for item in items[:20]:
-        item['owner'] = get_owner(request.vk, item['owner_id'])
+    items = prepare_item_list(request.vk, items)
 
     return {
         'items': items,
-        'debug_mode': request.REQUEST.get('debug') == '1'
+        'debug_mode': request.REQUEST.get('debug') == '1',
     }

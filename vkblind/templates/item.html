@@ -1,7 +1,7 @@
 {% load json %}
 
 <h2>{{ item.owner.name  }}</h2>
-<div class="text">{{ item.text|linebreaks }}</div>
+<div class="text">{{ item.text|urlize|linebreaks }}</div>
 {% if debug_mode %}
     <pre class="text" style="font-size:12px">{{ item|format_json }}</pre>
 {% endif %}

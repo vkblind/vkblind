@@ -4,7 +4,7 @@
 from annoying.decorators import render_to
 
 from vkblind.decorators import vk_api
-from vkblind.utils import get_owner
+from vkblind.utils import get_owner, prepare_item_list
 
 
 @vk_api
@@ -23,12 +23,11 @@ def view_groups(request):
 def view_group(request, group_id):
     group_id = '-{0}'.format(group_id)
     group = get_owner(request.vk, group_id)
-    items = request.vk.wall.get(owner_id=group_id)
-    items = items['items'][:30]
-    for item in items:
-        item['owner'] = get_owner(request.vk, item['owner_id'])
+    wall = request.vk.wall.get(owner_id=group_id)
+    items = prepare_item_list(request.vk, wall['items'])
 
     return {
         'group': group,
         'items': items,
+        'debug_mode': request.REQUEST.get('debug') == '1',
     }
