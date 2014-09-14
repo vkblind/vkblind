@@ -274,3 +274,7 @@ CUSTOM CSS HERE
 section {
     margin: 1em 0.5em;
 }
+
+li h2 {
+    margin-bottom: 20px;
+}
