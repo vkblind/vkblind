@@ -9,8 +9,14 @@
     <script data-main="{% static 'scripts/config' %}" src="{% static 'bower_components/requirejs/require.js' %}"></script>
 </head>
 <body>
-{% block content %}
-{% endblock content %}
+
+    {% block header %}
+        {% include 'header.html' %}
+    {% endblock header %}
+
+    {% block content %}
+
+    {% endblock content %}
 
     <script type="text/javascript">
         var appConfig = {
