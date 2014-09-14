@@ -13,10 +13,8 @@ __pycache__/
 env/
 build/
 develop-eggs/
-dist/
 downloads/
 eggs/
-lib/
 lib64/
 parts/
 sdist/
@@ -53,9 +51,7 @@ coverage.xml
 # Frontend stuff
 node_modules
 temp
-dist
 .sass-cache
-static/bower_components
 .tmp/
 
 # Sphinx documentation
