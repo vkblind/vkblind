@@ -22,7 +22,7 @@ def index(request):
         wall = vkapi.wall.get(owner_id=-groups['items'][3])
         pprintpp.pprint(wall)
     except:
-        pass
+        return {}
     return {}
 
 

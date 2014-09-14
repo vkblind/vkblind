@@ -3,10 +3,12 @@
 
 from annoying.decorators import render_to
 
-from vkblind.decorators import vk_api
+from vkblind.decorators import vk_api, retry_on_exception
 from vkblind.utils import get_owner, prepare_item_list
 
+from requests.exceptions import ReadTimeout
 
+@retry_on_exception(ReadTimeout)
 @vk_api
 @render_to('view_groups.html')
 def view_groups(request):
@@ -17,7 +19,7 @@ def view_groups(request):
     groups = request.vk.groups.getById(group_ids=group_ids_str)
     return {'groups': groups}
 
-
+@retry_on_exception(ReadTimeout)
 @vk_api
 @render_to('view_group.html')
 def view_group(request, group_id):
