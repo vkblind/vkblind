@@ -11,9 +11,7 @@
         <small>{{ item.date|human_datetime }}</small>
 
     {% endif %}
-    <div class="text" role="article">
         {{ item.text|urlize|linebreaks }}
-    </div>
     {% if debug_mode %}
         <pre class="text" style="font-size:12px">
             {{ item|format_json }}

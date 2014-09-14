@@ -4,7 +4,9 @@
 {% block title %}Стена группы "{{ group.name }}"{% endblock title %}
 
 {% block content %}
+    <ul>
     {% for item in items %}
         {% include 'item.html' %}
     {% endfor %}
+    </ul>
 {% endblock content %}
