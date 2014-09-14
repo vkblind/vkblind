@@ -91,8 +91,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-SOCIAL_AUTH_VK_OAUTH2_KEY = '4549471'
-SOCIAL_AUTH_VK_OAUTH2_SECRET = 'qwYAk43bIZ3aMWkZzkjr'
+SOCIAL_AUTH_VK_OAUTH2_KEY = '4549004'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'rvT47HCEhp8fejibEC2t'
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['wall', 'friends', 'offline', 'groups']
 
 ROOT_URLCONF = 'vkblind.urls'
