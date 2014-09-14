@@ -13,6 +13,8 @@ import os
 
 import dj_database_url
 
+import humanize
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
@@ -111,3 +113,5 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+humanize.i18n.activate('ru_RU')

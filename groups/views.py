@@ -29,5 +29,6 @@ def view_group(request, group_id):
     return {
         'group': group,
         'items': items,
+        'titles': False,
         'debug_mode': request.REQUEST.get('debug') == '1',
     }

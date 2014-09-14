@@ -1,8 +1,12 @@
 {% load json %}
+{% load human %}
 
-<h2>
-    {{ item.owner.name }}
-</h2>
+{% if titles %}
+    <h2>{{ item.title }}</h2>
+    <small>{{ item.date|human_datetime }}</small>
+{% else %}
+    <h2>Запись {{ forloop.counter }}: {{ item.date|human_datetime }}</h2>
+{% endif %}
 <div class="text" role="article">
     {{ item.text|urlize|linebreaks }}
 </div>
