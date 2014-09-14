@@ -1,12 +1,9 @@
 # coding: utf-8
 
-from annoying.decorators import render_to
-from django.core.cache import cache
-from django.contrib.auth import logout as logout_user
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import resolve_url, redirect
 import time
+from annoying.decorators import render_to
 from vkblind.decorators import vk_api
+from vkblind.utils import get_owner
 
 
 @vk_api
@@ -15,16 +12,25 @@ def view_feed(request):
     owners = []
     items = []
 
+    # extend owners list by user groups
+    # group ids should be negative
     groups = request.vk.groups.get()
-
-    # groups should be negative
     owners.extend(map(lambda x: x * -1, groups['items']))
 
-    # extend items
+    # extend owners list by user friends
+    friends = request.vk.friends.get()
+    owners.extend(friends['items'])
+
+    # get posts by owner
     for owner_id in owners[:2]:
         wall = request.vk.wall.get(owner_id=owner_id)
         items.extend(wall['items'])
         time.sleep(0.2)
+
+    # prepare items for display
+    items.sort(key=lambda x: x['date'])
+    for item in items[:20]:
+        item['owner'] = get_owner(request.vk, item['owner_id'])
 
     return {
         'items': items
