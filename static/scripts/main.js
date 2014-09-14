@@ -8,12 +8,12 @@ function ($) {
     a = $("a");
 
     $(document).ready(function(){
-        if (localStorage.getItem("is_inverted") == "false"){
-            html.removeClass("inverted");
-            a.removeClass("inverted");
-        } else {
+        if (localStorage.getItem("is_inverted") == "true"){
             html.addClass("inverted");
             a.addClass("inverted");
+        } else {
+            html.removeClass("inverted");
+            a.removeClass("inverted");
         }
     });
 
