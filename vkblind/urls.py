@@ -19,8 +19,8 @@ urlpatterns = patterns('',
     url(r'^feed/', include(feed.urls)),
     url(r'^groups/', include(groups.urls)),
     url(r'^accounts/login/$', login),
+    url(r'^(?P<vkuser>.+)$', profile),
     url('', include('social.apps.django_app.urls', namespace='social')),
-    url(r'^(?P<vkuser>.+)$', profile)
 )
 
 urlpatterns += staticfiles_urlpatterns()
