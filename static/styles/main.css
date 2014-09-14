@@ -45,6 +45,7 @@ a:active {
     background: #fff;
 }
 
+a:hover,
 a:active {
     outline-style: dashed;
 }
