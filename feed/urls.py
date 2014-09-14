@@ -2,9 +2,9 @@
 
 from django.conf.urls import patterns, include, url
 
-from views import view_feeds
+from views import view_feed
 
 
 urlpatterns = patterns('',
-    url(r'^$', view_feeds),
+    url(r'^$', view_feed),
 )
