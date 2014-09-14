@@ -2,7 +2,7 @@
 {% load human %}
 
 <li role="article">
-    {% if titles and item.owner.name %}
+    {% if titles %}
 
         <h2>Запись {{ forloop.counter }}: {{ item.date|human_datetime }}</h2>
     {% else %}
