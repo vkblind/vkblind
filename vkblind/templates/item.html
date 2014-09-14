@@ -7,7 +7,7 @@
         <h2>Запись {{ forloop.counter }}: {{ item.date|human_datetime }}</h2>
     {% else %}
 
-        <h2>{{ item.owner.name }}</h2>
+        {% if item.owner.name %}<h2>{{ item.owner.name }}</h2>{% endif %}
         <small>{{ item.date|human_datetime }}</small>
 
     {% endif %}
