@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <ul>
     {% for group in groups %}
-        <div><a href="{% url 'view_group' group.id %}">{{ group.name }}</a></div>
+        <li style="list-style: none">
+            <a href="{% url 'view_group' group.id %}">{{ group.name }}</a>
+        </li>
     {% endfor %}
+    <ul>
 {% endblock content %}
