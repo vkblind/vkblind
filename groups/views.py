@@ -2,13 +2,11 @@
 
 
 from annoying.decorators import render_to
-from django.contrib.auth.decorators import login_required
 
 from vkblind.decorators import vk_api
 
 
 @vk_api
-@login_required
 @render_to('view_groups.html')
 def view_groups(request):
     """
@@ -19,7 +17,6 @@ def view_groups(request):
     return {'groups': groups}
 
 @vk_api
-@login_required
 @render_to('view_group.html')
 def view_group(request, group_id):
     group = request.vk.groups.getById(group_id=group_id)[0]
