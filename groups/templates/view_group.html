@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>{{ group.name }}</h2>
-    <img src="{{ group.photo_200 }}" />
+    <h2>Стена группы {{ group.name }}</h2>
+    {% for wall_item in wall_items %}
+        <div>{{ wall_item.text }}</div><p>
+    {% endfor %}
 {% endblock content %}

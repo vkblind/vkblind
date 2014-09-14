@@ -23,4 +23,5 @@ def view_groups(request):
 def view_group(request, group_id):
     vkapi = vk.API(access_token=request.user.social_auth.get().tokens)
     group = vkapi.groups.getById(group_id=group_id)[0]
-    return {'group': group}
+    wall = vkapi.wall.get(owner_id='-%s' % group_id)
+    return {'group': group, 'wall_items': wall['items'][:100]}
