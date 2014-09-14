@@ -15,6 +15,12 @@ def view_groups(request):
     group_ids_str = ','.join(map(lambda x: str(x), groups_info['items']))
 
     groups = vkapi.groups.getById(group_ids=group_ids_str)
-    group_names = [group['name'] for group in groups]
+    return {'groups': groups}
 
-    return {'group_names': group_names}
+
+@login_required
+@render_to('view_group.html')
+def view_group(request, group_id):
+    vkapi = vk.API(access_token=request.user.social_auth.get().tokens)
+    group = vkapi.groups.getById(group_id=group_id)[0]
+    return {'group': group}
