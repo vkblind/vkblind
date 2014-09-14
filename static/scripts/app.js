@@ -2,12 +2,15 @@ define([
     'underscore',
     'backbone',
     'marionette',
+    'bootstrap',
 
     'modules/header',
     'modules/news'
 ],
 
 function (_, Backbone, Marionette, header, news) {
+    return;
+
     var app = new Backbone.Marionette.Application();
 
     app.addRegions({

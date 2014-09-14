@@ -3,6 +3,7 @@ requirejs.config({
     paths: {
         tpl: '../bower_components/requirejs-tpl/tpl',
         backbone: '../bower_components/backbone/backbone',
+        bootstrap: '../bower_components/bootstrap/dist/js/bootstrap.min',
         jquery: '../bower_components/jquery/dist/jquery',
         marionette: '../bower_components/marionette/lib/backbone.marionette',
         underscore: '../bower_components/underscore/underscore',
@@ -15,6 +16,9 @@ requirejs.config({
         },
         underscore: {
             exports: '_'
+        },
+        bootstrap: {
+            deps: ['jquery']
         }
     }
 });
