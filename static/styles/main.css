@@ -29,9 +29,12 @@ body {
 
 a,
 a:visited {
-	outline-width: 0.1em;
+    outline-offset: -0.1em;
+    outline-width: 0.1em;
     color: #fff;
     padding: 0.1em;
+
+    display: inline-block;
 }
 
 .inverted a,
@@ -40,14 +43,24 @@ a:visited {
 }
 
 a:hover,
-a:active {
+a:active,
+a:focus {
     color: #000;
     background: #fff;
 }
 
 a:hover,
-a:active {
+a:active,
+a:focus {
     outline-style: dashed;
+}
+
+a:focus {
+	outline-color: #000;
+}
+
+.inverted a:focus {
+	outline-color: #fff;
 }
 
 .inverted a:hover,
