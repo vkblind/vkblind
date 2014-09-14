@@ -7,7 +7,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 import groups.urls
 import ims.urls
 import feed.urls
-from views import login, logout, index
+from views import login, logout, index, profile
 
 
 urlpatterns = patterns('',
@@ -18,9 +18,9 @@ urlpatterns = patterns('',
     url(r'^im/', include(ims.urls)),
     url(r'^feed/', include(feed.urls)),
     url(r'^groups/', include(groups.urls)),
-    
     url(r'^accounts/login/$', login),
-    url('', include('social.apps.django_app.urls', namespace='social'))
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^(?P<vkuser>.+)$', profile)
 )
 
 urlpatterns += staticfiles_urlpatterns()

@@ -1,17 +1,19 @@
 {% load json %}
 {% load human %}
 
-{% if titles %}
-    <h2>{{ item.title }}</h2>
-    <small>{{ item.date|human_datetime }}</small>
-{% else %}
-    <h2>Запись {{ forloop.counter }}: {{ item.date|human_datetime }}</h2>
-{% endif %}
-<div class="text" role="article">
-    {{ item.text|urlize|linebreaks }}
-</div>
-{% if debug_mode %}
-    <pre class="text" style="font-size:12px">
-        {{ item|format_json }}
-    </pre>
-{% endif %}
+<li role="article">
+    {% if titles %}
+        <h2>{{ item.title }}</h2>
+        <small>{{ item.date|human_datetime }}</small>
+    {% else %}
+        <h2>Запись {{ forloop.counter }}: {{ item.date|human_datetime }}</h2>
+    {% endif %}
+    <div class="text" role="article">
+        {{ item.text|urlize|linebreaks }}
+    </div>
+    {% if debug_mode %}
+        <pre class="text" style="font-size:12px">
+            {{ item|format_json }}
+        </pre>
+    {% endif %}
+</li>
