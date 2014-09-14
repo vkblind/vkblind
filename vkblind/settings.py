@@ -61,6 +61,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'vkblind',
+    'groups',
     'feeds',
     'ims',
     'social.apps.django_app.default'

@@ -12,7 +12,7 @@ def index(request):
     try:
         import pprintpp
         import vk
-        vkapi = vk.API(access_token=request.user.social_auth.all()[0].tokens)
+        vkapi = vk.API(access_token=request.user.social_auth.get().tokens)
 
         groups = vkapi.groups.get()
         pprintpp.pprint(groups)

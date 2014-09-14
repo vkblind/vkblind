@@ -6,7 +6,7 @@
     <title>VK Blind</title>
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
-    <script data-main="static/scripts/config" src="{% static 'bower_components/requirejs/require.js' %}"></script>
+    <script data-main="{% static 'scripts/config' %}" src="{% static 'bower_components/requirejs/require.js' %}"></script>
 </head>
 <body>
 {% block content %}
