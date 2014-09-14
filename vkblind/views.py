@@ -37,4 +37,4 @@ def profile(request, vkuser):
 
 def logout(request):
     logout_user(request)
-    return redirect(resolve_url('home'))
+    return redirect('/')
