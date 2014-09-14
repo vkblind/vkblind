@@ -1,4 +1,4 @@
 {% extends 'base.html' %}
 
-{% block title %}Мой профиль{% endblock title %}
-
+{% block pagetitle %} — Мой профиль{% endblock pagetitle %}
+{% block title %}{{ user.get_full_name }}{% endblock title %}
