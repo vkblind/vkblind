@@ -268,3 +268,8 @@ CUSTOM CSS HERE
     padding: 1em;
     text-align: center;
 }
+
+
+section {
+    margin: 1em 0.5em;
+}
