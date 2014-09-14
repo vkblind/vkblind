@@ -4,27 +4,33 @@
     height: 100%;
   }
   .vkb-navbar-fixed {
+    background: black;
+    z-index: 1000;
     position: fixed;
     top: 0;
     width: 100%;
   }
   .navigation {
+    display: table;
+    table-layout: fixed;
+
     width: 100%;
     overflow: auto;
+    text-align: justify;
+    
+    border-collapse: collapse;
   }
   .navigation li {
-    margin: 0px;
-    margin-left: -5px;
-    float: left;
+    margin: 0;
 
     list-style: none;
-    width: 24.6%;
 
-    display: inline-block;
+    display: table-cell;
+    position: relative;
+
     text-align: center;
 
     border: 5px white solid;
-    border-collapse: collapse;
   }
   .navigation li:first-of-type {
     margin-left: 0px;
@@ -34,6 +40,8 @@
     display: inline-block;
     height: 3em;
     width: 100%;
+
+    text-decoration: none;
   }
   .navigation li>a>span {
     display: inline-block;
