@@ -55,7 +55,6 @@ node_modules
 temp
 dist
 .sass-cache
-static/bower_components
 .tmp/
 
 # Sphinx documentation
