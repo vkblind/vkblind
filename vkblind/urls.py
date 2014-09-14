@@ -6,7 +6,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 import groups.urls
 import ims.urls
-import feeds.urls
+import feed.urls
 from views import login, logout, index
 
 
@@ -16,7 +16,7 @@ urlpatterns = patterns('',
 
     url(r'^logout/$', logout, name='logout'),
     url(r'^im/', include(ims.urls)),
-    url(r'^feed/', include(feeds.urls)),
+    url(r'^feed/', include(feed.urls)),
     url(r'^groups/', include(groups.urls)),
     
     url(r'^accounts/login/$', login),

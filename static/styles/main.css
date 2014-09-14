@@ -30,6 +30,7 @@ body {
 a,
 a:visited {
     color: #fff;
+    padding: 0.1em;
 }
 
 .inverted a,
@@ -42,6 +43,7 @@ a:active {
     color: #000;
     background: #fff;
 }
+
 a:active {
     outline-style: solid;
 }
@@ -246,6 +248,6 @@ CUSTOM CSS HERE
 */
 
 .auth-block {
+    padding: 1em;
     text-align: center;
 }
-
