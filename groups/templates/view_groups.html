@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load human %}
+
 {% block pagetitle %} — Список групп{% endblock pagetitle %}
 {% block title %}Список групп{% endblock title %}
 
@@ -7,7 +9,7 @@
     <ul role="directory">
     {% for group in groups %}
         <li style="list-style: none">
-            <a href="{% url 'view_group' group.id %}">{{ group.name }}</a>
+            <a href="{% url 'view_group' group.id %}">{{ group.name|readable }}</a>
         </li>
     {% endfor %}
     <ul>
