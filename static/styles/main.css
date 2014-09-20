@@ -22,6 +22,15 @@ html.inverted {
     color: #000;
     background: #fff;
 }
+html.S {
+    font-size: 1em;
+}
+html.M {
+    font-size: 2em;
+}
+html.L {
+    font-size: 3em;
+}
 
 body {
 	margin: 3.2em 0 0 0;
@@ -277,4 +286,29 @@ section {
 
 li h2 {
     margin-bottom: 20px;
+}
+
+.profile-table{
+    width: 100%;
+    border-spacing: 10px;
+    border-collapse: separate;
+    margin-bottom: 2em;
+}
+.profile-table__cell{
+    text-align: left;
+    vertical-align: top;
+    padding: 10px;
+}
+.profile-table__label{
+    width:10em;
+}
+
+.profile-table__caption{
+    text-align: left;
+    padding: 0 0 1em 0;
+}
+.profile-table ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }

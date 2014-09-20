@@ -6,14 +6,13 @@ from django.contrib.auth import logout as logout_user
 from django.shortcuts import resolve_url, redirect
 
 from vkblind.decorators import vk_api
-
+import pprintpp
+import vk
 
 @vk_api
 @render_to('index.html')
 def index(request):
     try:
-        import pprintpp
-        import vk
         vkapi = vk.API(access_token=request.user.social_auth.get().tokens)
 
         groups = vkapi.groups.get()
@@ -32,7 +31,54 @@ def login(request):
 
 @render_to('profile.html')
 def profile(request, vkuser):
-    return {}
+    uid = request.user.social_auth.get().uid
+    vkapi = vk.API(access_token=request.user.social_auth.get().tokens)
+
+    # использую  users.get, а не account.getProfileInfo
+    # потому что второй отчего-то только для стэндэлона
+    # alexger
+
+    account = vkapi.users.get(user_ids=uid, fields='sex, '
+                                                   'bdate, '
+                                                   'city, '
+                                                   'country, '
+                                                   'online, '
+                                                   'online_mobile, '
+                                                   'domain, '
+                                                   'home_town, '
+                                                   'has_mobile, '
+                                                   'contacts, '
+                                                   'connections, '
+                                                   'site, '
+                                                   'education, '
+                                                   'universities, '
+                                                   'personal, '
+                                                   'schools, '
+                                                   'can_post, '
+                                                   'can_see_all_posts, '
+                                                   'can_see_audio, '
+                                                   'can_write_private_message, '
+                                                   'status, '
+                                                   'last_seen, '
+                                                   'common_count, '
+                                                   'relation, '
+                                                   'relatives, '
+                                                   'counters, '
+                                                   'screen_name,'
+                                                   'maiden_name, '
+                                                   'timezone, '
+                                                   'occupation,'
+                                                   'activities, '
+                                                   'interests, '
+                                                   'music, '
+                                                   'movies, '
+                                                   'tv, '
+                                                   'books, '
+                                                   'games, '
+                                                   'about, '
+                                                   'quotes')
+
+    return {'account': account[0]}
 
 
 def logout(request):

@@ -1,4 +1,354 @@
 {% extends 'base.html' %}
 
 {% block pagetitle %} — Мой профиль{% endblock pagetitle %}
-{% block title %}{{ user.get_full_name }}{% endblock title %}
+{% block title %}
+    {{ account.first_name }}
+    {{ account.nickname }}
+    {{ account.last_name }}
+    {% if account.maiden_name %}
+    <span title = "девичья фамилия">({{ account.maiden_name }})</span>
+    {% endif %}
+{% endblock title %}
+{% block content %}
+    <table class = 'profile-table' title = 'Общая информация' summary='Общая информация пользователя: дата рождения, родной город, место работы или учебы'>
+    <tbody>
+        {% if account.bdate %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">День рождения</th>
+            <td class = "profile-table__cell">{{ account.bdate }}</td>
+        </tr>
+        {% endif %}
+        {% if account.home_town %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Родной город</th>
+            <td class = "profile-table__cell">{{ account.home_town }}</td>
+        </tr>
+        {% endif %}
+
+        {% if account.occupation %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">
+                {% if account.occupation.type == 'work' %}
+                Место работы
+                {% endif %}
+                {% if account.occupation.type == 'study' %}
+                Место учебы
+                {% endif %}
+            </th>
+            <td class = "profile-table__cell">{{ account.occupation.name }}</td>
+        </tr>
+        {% endif %}
+
+        {% if account.relation %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">
+            Семейное положение
+            </th>
+            <td class = "profile-table__cell">
+
+            {% if account.sex == 1 %}
+                {% if account.relation == 1 %} не замужем
+                {% elif  account.relation == 2 %} есть друг
+                {% elif  account.relation == 3 %} помолвлена
+                {% elif  account.relation == 4 %} замужем
+                {% elif  account.relation == 5 %} всё сложно
+                {% elif  account.relation == 6 %} в активном поиске
+                {% elif  account.relation == 7 %} влюблена
+                {% endif %}
+            {% else %}
+                {% if account.relation == 1 %} не женат
+                {% elif  account.relation == 2 %} есть подруга
+                {% elif  account.relation == 3 %} помолвлен
+                {% elif  account.relation == 4 %} женат
+                {% elif  account.relation == 5 %} всё сложно
+                {% elif  account.relation == 6 %} в активном поиске
+                {% elif  account.relation == 7 %} влюблён
+                {% endif %}
+            {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+
+    </tbody>
+    </table>
+
+
+    <table class = 'profile-table' title = 'Контактная информация' summary='Контактная информация пользователя: город и домашний телефон (если указано)'>
+    <caption class = 'profile-table__caption'>Контактная информация</caption>
+    <tbody>
+        {% if account.city.title %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Город</th>
+            <td class = "profile-table__cell">{{ account.city.title }}</td>
+        </tr>
+        {% endif %}
+        {% if account.home_phone %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Домашний телефон</th>
+            <td class = "profile-table__cell">{{ account.home_phone }}</td>
+        </tr>
+        {% endif %}
+    </tbody>
+    </table>
+
+    {% if account.universities %}
+    <table class = 'profile-table' title='Образование' summary='Образование: среднее и высшее'>
+    <caption class = 'profile-table__caption'>Образование</caption>
+    <tbody>
+        {% for university in account.universities %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell" title="высшее учебное заведение">ВУЗ</th>
+            <td class = "profile-table__cell">
+                <ul>
+
+                    {% if university.name %}
+                    <li title = "Название и год выпуска">
+                        {{ university.name }}{% if university.graduation %},
+                            {{ university.graduation }}
+                        {% endif %}
+                    </li>
+                    {% endif %}
+
+                    {% if university.faculty_name %}
+                    <li title = "Факультет">{{ university.faculty_name }}</li>
+                    {% endif %}
+
+                    {% if university.chair_name %}
+                    <li title = "Кафедра">{{ university.chair_name }}</li>
+                    {% endif %}
+
+                    {% if university.education_form %}
+                    <li title = "Форма обучения">{{ university.education_form }}</li>
+                    {% endif %}
+
+                    {% if university.education_status %}
+                    <li title = "Текущий статус">{{ university.education_status }}</li>
+                    {% endif %}
+
+
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+
+        {% for school in account.schools %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell" title="
+            {% if school.type_str %}{{ school.type_str }}{% else %}Школа{% endif %}">
+            {% if school.type_str %}{{ school.type_str }}{% else %}Школа{% endif %}
+            </th>
+            <td class = "profile-table__cell">
+                <ul>
+
+                    {% if school.name %}
+                    <li title = "Название и год выпуска">
+                        {{ school.name }}{% if school.year_graduated %},
+                            {{ school.year_graduated }}
+                        {% endif %}
+                    </li>
+                    {% endif %}
+
+                    {% if school.year_from or school.year_to %}
+                    <li title = "Годы обучения">
+                        {% if school.year_from and school.year_to %} {{ school.year_from }}&mdash;{{ school.year_to }} {% endif %}
+                        {% if school.year_from and not school.year_to %} c {{ school.year_from }} {% endif %}
+                        {% if not school.year_from and school.year_to %} по {{ school.year_to }} {% endif %}
+                    </li>
+                    {% endif %}
+
+                    {% if school.class %}
+                    <li title = "Класс">{{ school.class }}</li>
+                    {% endif %}
+
+                    {% if school.speciality %}
+                    <li title = "Специальность">{{ school.speciality }}</li>
+                    {% endif %}
+
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+    </table>
+    {% endif %}
+
+
+
+    {% if account.activities or account.quotes or account.interests or account.music or account.tv or account.movies or account.about or account.books or account.games %}
+    <table class = 'profile-table' title='Личная информация' summary='Личная информация: интересы, любимое, несколько слов о себе (если указано)'>
+    <caption class = 'profile-table__caption'>Личная информация</caption>
+    <tbody>
+        {% if account.activities %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Деятельность</th>
+            <td class = "profile-table__cell">{{ account.activities }}</td>
+        </tr>
+        {% endif %}
+        {% if account.interests %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Интересы</th>
+            <td class = "profile-table__cell">{{ account.interests }}</td>
+        </tr>
+        {% endif %}
+        {% if account.quotes %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Любимые цитаты</th>
+            <td class = "profile-table__cell">{{ account.quotes }}</td>
+        </tr>
+        {% endif %}
+        {% if account.music %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Любимая музыка</th>
+            <td class = "profile-table__cell">{{ account.music }}</td>
+        </tr>
+        {% endif %}
+        {% if account.movies %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Любимые фильмы</th>
+            <td class = "profile-table__cell">{{ account.movies }}</td>
+        </tr>
+        {% endif %}
+        {% if account.tv %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Любимые телешоу</th>
+            <td class = "profile-table__cell">{{ account.tv }}</td>
+        </tr>
+        {% endif %}
+        {% if account.books %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Любимые книги</th>
+            <td class = "profile-table__cell">{{ account.books }}</td>
+        </tr>
+        {% endif %}
+        {% if account.games %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Любимые игры</th>
+            <td class = "profile-table__cell">{{ account.games }}</td>
+        </tr>
+        {% endif %}
+        {% if account.about %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">О себе</th>
+            <td class = "profile-table__cell">{{ account.about }}</td>
+        </tr>
+        {% endif %}
+        {% if account.connections %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Соцсети</th>
+            <td class = "profile-table__cell">{{ account.connections }}</td>
+        </tr>
+        {% endif %}
+    </tbody>
+    </table>
+    {% endif %}
+
+    {% if account.personal %}
+    <table class = 'profile-table' title='Жизненная позиция' summary='Жизненная позиция: взгляды, цели, приоритеты (если указано)'>
+    <caption class = 'profile-table__caption'>Жизненная позиция</caption>
+    <tbody>
+        {% if account.personal.political %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">
+            Политические взгляды
+            </th>
+            <td class = "profile-table__cell">
+                {% if account.personal.political == 1 %} коммунистические
+                {% elif  account.personal.political == 2 %} социалистические
+                {% elif  account.personal.political == 3 %} умеренные
+                {% elif  account.personal.political == 4 %} либеральные
+                {% elif  account.personal.political == 5 %} консервативные
+                {% elif  account.personal.political == 6 %} монархические
+                {% elif  account.personal.political == 7 %} ультраконсервативные
+                {% elif  account.personal.political == 8 %} индифферентные
+                {% elif  account.personal.political == 9 %} либертарианские
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+        {% if account.personal.langs %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Языки</th>
+            <td class = "profile-table__cell">{{ account.personal.langs }}</td>
+        </tr>
+        {% endif %}
+        {% if account.personal.religion %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Мировоззрение</th>
+            <td class = "profile-table__cell">{{ account.personal.religion }}</td>
+        </tr>
+        {% endif %}
+        {% if account.personal.inspired_by %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Источники вдохновения</th>
+            <td class = "profile-table__cell">{{ account.personal.inspired_by }}</td>
+        </tr>
+        {% endif %}
+        {% if account.personal.people_main %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Главное в людях</th>
+            <td class = "profile-table__cell">
+                {% if account.people_main == 1 %} ум и креативность
+                {% elif  account.people_main == 2 %} доброта и честность
+                {% elif  account.people_main == 3 %} красота и здоровье
+                {% elif  account.people_main == 4 %} власть и богатство
+                {% elif  account.people_main == 5 %} смелость и упорство
+                {% elif  account.people_main == 6 %} юмор и жизнелюбие
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+        {% if account.personal.life_main %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Главное в жизни</th>
+            <td class = "profile-table__cell">
+                {% if account.personal.life_main == 1 %} семья и дети
+                {% elif  account.personal.life_main == 2 %} карьера и деньги
+                {% elif  account.personal.life_main == 3 %} развлечения и отдых
+                {% elif  account.personal.life_main == 4 %} наука и исследования
+                {% elif  account.personal.life_main == 5 %} совершенствование мира
+                {% elif  account.personal.life_main == 6 %} саморазвитие
+                {% elif  account.personal.life_main == 7 %} красота и искусстсво
+                {% elif  account.personal.life_main == 8 %} слава и влияние
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+        {% if account.personal.smoking %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Отношение к курению</th>
+            <td class = "profile-table__cell">
+                {% if account.personal.smoking == 1 %} резко негативное
+                {% elif  account.personal.smoking == 2 %} негативное
+                {% elif  account.personal.smoking == 3 %} нейтральное
+                {% elif  account.personal.smoking == 4 %} компромиссное
+                {% elif  account.personal.smoking == 5 %} положительное
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+        {% if account.personal.alcohol %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Отношение к алкоголю</th>
+            <td class = "profile-table__cell">
+                {% if account.personal.alcohol == 1 %} резко негативное
+                {% elif  account.personal.alcohol == 2 %} негативное
+                {% elif  account.personal.alcohol == 3 %} нейтральное
+                {% elif  account.personal.alcohol == 4 %} компромиссное
+                {% elif  account.personal.alcohol == 5 %} положительное
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+
+
+
+    </tbody>
+    </table>
+    {% endif %}
+
+
+
+
+
+{% endblock content %}
