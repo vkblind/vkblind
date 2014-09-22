@@ -69,6 +69,14 @@
         </tr>
         {% endif %}
 
+
+        {% if account.personal.langs %}
+        <tr>
+            <th scope="row" class = "profile-table__label profile-table__cell">Языки</th>
+            <td class = "profile-table__cell">{{ account.personal.langs|join:", " }}</td>
+        </tr>
+        {% endif %}
+
     </tbody>
     </table>
 
@@ -264,12 +272,6 @@
                 {% elif  account.personal.political == 9 %} либертарианские
                 {% endif %}
             </td>
-        </tr>
-        {% endif %}
-        {% if account.personal.langs %}
-        <tr>
-            <th scope="row" class = "profile-table__label profile-table__cell">Языки</th>
-            <td class = "profile-table__cell">{{ account.personal.langs }}</td>
         </tr>
         {% endif %}
         {% if account.personal.religion %}
