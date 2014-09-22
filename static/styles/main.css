@@ -10,15 +10,17 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+
 html {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-    color: #fff;
+    height: 100%;
     background: #000;
-    font-size: 3em;
+    font-size: 2.6em;
     line-height: 1.4;
+    color: #fff;
 }
 
-html.inverted {
+html.white {
     color: #000;
     background: #fff;
 }
@@ -29,7 +31,7 @@ html.M {
     font-size: 2em;
 }
 html.L {
-    font-size: 3em;
+    font-size: 2.6em;
 }
 
 body {
@@ -47,8 +49,8 @@ a:visited {
     display: inline-block;
 }
 
-.inverted a,
-.inverted a:visited {
+html.white a,
+html.white a:visited {
 	color: #000;
 }
 
@@ -70,13 +72,13 @@ a:focus {
 	outline-color: #000;
 }
 
-.inverted a:focus {
+html.white a:focus {
 	outline-color: #fff;
 }
 
-.inverted a:hover,
-.inverted a:active,
-.inverted a:focus {
+html.white a:hover,
+html.white a:active,
+html.white a:focus {
     color: #fff;
     background: #000;
 }
@@ -86,8 +88,8 @@ a:focus {
     outline: 0.1em solid #fff;
 }
 
-.inverted ::-moz-selection,
-.inverted ::selection {
+html.white ::-moz-selection,
+html.white ::selection {
     outline-color: #000;
 }
 
@@ -100,7 +102,7 @@ hr {
     padding: 0;
 }
 
-.inverted hr {
+html.white hr {
     border-color: #000;
 }
 
@@ -288,17 +290,24 @@ li h2 {
     margin-bottom: 20px;
 }
 
-.profile-table{
+
+
+/* profile */
+
+.profile-table,
+.settings-table{
     width: 100%;
     border-spacing: 10px;
     border-collapse: separate;
     margin-bottom: 2em;
 }
+.settings-table__cell,
 .profile-table__cell{
     text-align: left;
     vertical-align: top;
     padding: 10px;
 }
+.settings-table__label,
 .profile-table__label{
     width:10em;
 }
@@ -312,3 +321,69 @@ li h2 {
     margin: 0;
     padding: 0;
 }
+
+
+/* header */
+
+
+  header {
+    background: black;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+
+    margin-right: 0.1em;
+  }
+  html.white header {
+    background: white;
+  }
+  .vkb-navbar-fixed {
+    width: 100%;
+  }
+  .navigation {
+    display: table;
+    table-layout: fixed;
+
+    width: 100%;
+    text-align: justify;
+
+    border-collapse: collapse;
+  }
+  .navigation li {
+    margin: 0;
+
+    list-style: none;
+
+    display: table-cell;
+    position: relative;
+
+    text-align: center;
+
+    border: 0.1em white solid;
+  }
+  html.white .navigation li {
+    border-color: black;
+  }
+  .navigation li>a {
+    padding: 0;
+
+    line-height: 1em;
+    display: inline-block;
+    height: 3em;
+    width: 100%;
+
+    text-decoration: none;
+  }
+  .navigation li>a>span {
+    display: inline-block;
+    margin-top: 1em;
+    text-transform: uppercase;
+  }
+
+
+
+  button,
+  select {
+      font-size: 1em;
+      padding: 0 0.5em;
+  }

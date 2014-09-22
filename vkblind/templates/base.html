@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class = "{{ settings.font_size }} {{ settings.color_scheme }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -16,7 +16,7 @@
         {% include 'header.html' %}
     {% endblock header %}
 
-    <section>
+    <section role = "main">
         <h1>{% block title %}{% endblock title %}</h1>
         {% block content %}{% endblock content %}
     </section>

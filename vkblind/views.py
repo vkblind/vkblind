@@ -4,7 +4,7 @@ from annoying.decorators import render_to
 from django.core.cache import cache
 from django.contrib.auth import logout as logout_user
 from django.shortcuts import resolve_url, redirect
-
+from vkblind.models import Settings
 from vkblind.decorators import vk_api
 import pprintpp
 import vk
@@ -80,6 +80,21 @@ def profile(request, vkuser):
 
     return {'account': account[0]}
 
+@render_to('settings.html')
+def settings(request):
+    return {}
+
+def save_settings(request):
+    user = request.user
+    try:
+       settings = Settings.objects.get(user=user)
+    except:
+       settings = Settings()
+    settings.user = user
+    settings.font_size = request.POST['font_size']
+    settings.color_scheme = request.POST['color_scheme']
+    settings.save()
+    return redirect('../')
 
 def logout(request):
     logout_user(request)

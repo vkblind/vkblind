@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block pagetitle %} — Мои настройки {% endblock pagetitle %}
+{% block title %}
+    Настройки
+{% endblock title %}
+{% block content %}
+
+    <form method = "POST" action="save/">
+    {% csrf_token %}
+    <table class = "settings-table" title = 'Настройки' summary='Настройки: цветовая гамма и размер шрифта'>
+        <tbody>
+            <tr>
+                <th class = "settings-table__cell settings-table__label" scope="row">Цветовая гамма</th>
+                <td class = "settings-table__cell">
+                    <select name = "color_scheme">
+                      <option value="black" {% if settings.color_scheme == 'black' %}selected{% endif %}>с преобладанием черного</option>
+                      <option value="white" {% if settings.color_scheme == 'white' %}selected{% endif %}>с преобладанием белого</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th class = "settings-table__cell settings-table__label" scope="row">Размер шрифта</th>
+                <td class = "settings-table__cell">
+                    <select name = "font_size">
+                      <option value="S" {% if settings.font_size == 'S' %}selected{% endif %}>маленький</option>
+                      <option value="M" {% if settings.font_size == 'M' %}selected{% endif %}>средний</option>
+                      <option value="L" {% if settings.font_size == 'L' %}selected{% endif %}>большой</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="submit">Сохранить</button>
+    </form>
+
+{% endblock content %}
