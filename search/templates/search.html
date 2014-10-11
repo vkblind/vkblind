@@ -3,9 +3,9 @@
 {% load human %}
 
 {% block content %}
-<form action="{% url 'search' %}" method="post" class="search">
-    {% csrf_token %}
-    <input type="text" name="query" placeholder="Что будем искать?" />
+<form action="{% url 'search' %}" method="get" class="search">
+    <input type="text" name="c[q]" placeholder="Что будем искать?" />
+    <input type="hidden" name="c[section]" value="auto" />
     <input type="submit" value="Найти" title="Найти" />
 </form>
 
@@ -25,12 +25,16 @@
     <h3>Люди</h3>
 {% endif %}
 {% for user in users %}
-    <li>
+    <li style="list-style: none">
         <a href="{% url 'profile' user.id %}">
             {{ user.last_name|readable }} {{ user.first_name|readable }}
         </a>
     </li>
 {% endfor %}
 </ul>
+
+{% if vk_url %}
+    <div>Не нашли то, что нужно? Давайте, поищем <a href="{{ vk_url }}" target="_blank">в контакте</a>.</div>
+{% endif %}
 
 {% endblock content %}
