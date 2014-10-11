@@ -7,13 +7,14 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 import groups.urls
 import ims.urls
 import feed.urls
-from views import login, logout, index, profile, settings, save_settings, search
+import search.urls as search_urls
+from views import login, logout, index, profile, settings, save_settings
 
 
 urlpatterns = patterns('',
     url(r'^$', include(groups.urls)),
+    url('', include(search_urls)),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^search/', search, name='search'),
     url(r'^logout/$', logout, name='logout'),
     url(r'^im/', include(ims.urls)),
     url(r'^feed/', include(feed.urls)),

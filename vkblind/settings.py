@@ -63,6 +63,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'vkblind',
+    'search',
     'groups',
     'feed',
     'ims',
