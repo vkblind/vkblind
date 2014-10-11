@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 from functools import wraps
 
+
 def retry_on_exception(exception, times=10):
     def decorator(func):
         @wraps(func)
@@ -17,6 +18,7 @@ def retry_on_exception(exception, times=10):
                     pass
         return decorated
     return decorator
+
 
 def vk_api(func):
     @login_required

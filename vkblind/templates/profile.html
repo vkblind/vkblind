@@ -251,7 +251,7 @@
     </table>
     {% endif %}
 
-    {% if account.personal %}
+    {% if account.personal.political or account.personal.religion or account.personal.inspired_by or account.personal.people_main or account.personal.life_main or account.personal.smoking or account.personal.alcohol %}
     <table class = 'profile-table' title='Жизненная позиция' summary='Жизненная позиция: взгляды, цели, приоритеты (если указано)'>
     <caption class = 'profile-table__caption'>Жизненная позиция</caption>
     <tbody>
@@ -290,12 +290,12 @@
         <tr>
             <th scope="row" class = "profile-table__label profile-table__cell">Главное в людях</th>
             <td class = "profile-table__cell">
-                {% if account.people_main == 1 %} ум и креативность
-                {% elif  account.people_main == 2 %} доброта и честность
-                {% elif  account.people_main == 3 %} красота и здоровье
-                {% elif  account.people_main == 4 %} власть и богатство
-                {% elif  account.people_main == 5 %} смелость и упорство
-                {% elif  account.people_main == 6 %} юмор и жизнелюбие
+                {% if account.personal.people_main == 1 %} ум и креативность
+                {% elif  account.personal.people_main == 2 %} доброта и честность
+                {% elif  account.personal.people_main == 3 %} красота и здоровье
+                {% elif  account.personal.people_main == 4 %} власть и богатство
+                {% elif  account.personal.people_main == 5 %} смелость и упорство
+                {% elif  account.personal.people_main == 6 %} юмор и жизнелюбие
                 {% endif %}
             </td>
         </tr>

@@ -6,8 +6,10 @@ from django.contrib.auth import logout as logout_user
 from django.shortcuts import resolve_url, redirect
 from vkblind.models import Settings
 from vkblind.decorators import vk_api
+import datetime
 import pprintpp
 import vk
+
 
 @vk_api
 @render_to('index.html')
@@ -29,6 +31,7 @@ def index(request):
 def login(request):
     return {}
 
+
 @render_to('profile.html')
 def profile(request, vkuser):
     uid = request.user.social_auth.get().uid
@@ -38,7 +41,7 @@ def profile(request, vkuser):
     # потому что второй отчего-то только для стэндэлона
     # alexger
 
-    account = vkapi.users.get(user_ids=uid, fields='sex, '
+    account = vkapi.users.get(user_ids=vkuser, fields='sex, '
                                                    'bdate, '
                                                    'city, '
                                                    'country, '
@@ -78,35 +81,64 @@ def profile(request, vkuser):
                                                    'about, '
                                                    'quotes')
 
+
+    monthsList = [
+        u'января',
+        u'февраля',
+        u'марта',
+        u'апреля',
+        u'мая',
+        u'июня',
+        u'июля',
+        u'августа',
+        u'сентября',
+        u'октября',
+        u'ноября',
+        u'декабря'
+    ]
+
+    try:
+        bdate = account[0]['bdate'].split('.')
+        bday = bdate[0]
+        bmonth = monthsList[int(bdate[1]) - 1]
+    except:
+        return {'account': account[0]}
+
+    try:
+        byear = bdate[2] + u' г.'
+    except:
+        byear = ''
+        
+    pprintpp.pprint(bday + ' ' + bmonth + ' ' + byear)
+    string_bdate = bday + ' ' + bmonth + ' ' + byear
+
+    account[0]['bdate'] = string_bdate
     return {'account': account[0]}
+
 
 @render_to('settings.html')
 def settings(request):
     return {}
 
+
 def save_settings(request):
     user = request.user
     try:
-       settings = Settings.objects.get(user=user)
+        settings = Settings.objects.get(user=user)
     except:
-       settings = Settings()
+        settings = Settings()
     settings.user = user
     settings.font_size = request.POST['font_size']
     settings.color_scheme = request.POST['color_scheme']
     settings.save()
     return redirect('../')
 
+
 def logout(request):
     logout_user(request)
     return redirect('/')
 
 
-@vk_api
-@render_to('search.html')
-def search(request):
-    if request.method == 'POST':
-        query = request.POST['query']
-        groups = request.vk.groups.search(q=query, count=10)['items']
-        return {'groups': groups}
-    else:
-        return {'groups': []}
+@render_to('help_page.html')
+def help_page(request):
+    return {}
