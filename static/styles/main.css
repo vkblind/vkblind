@@ -54,6 +54,18 @@ html.white a:visited {
 	color: #000;
 }
 
+input[type=text], input[type=password] {
+    color: #000;
+    background: #fff;
+    font-size: 1em;
+}
+
+input[type=submit] {
+    color: #fff;
+    background: #000;
+    font-size: 1em;
+}
+
 a:hover,
 a:active,
 a:focus {
