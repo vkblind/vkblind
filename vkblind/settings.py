@@ -118,3 +118,17 @@ USE_L10N = True
 USE_TZ = True
 
 humanize.i18n.activate('ru_RU')
+
+
+# user settings choices
+
+FONT_SIZES = (
+    ('L', 'large'),
+    ('M', 'medium'),
+    ('S', 'small'),
+)
+
+COLOR_SCHEMES = (
+    ('black', 'black'),
+    ('white', 'white'),
+)

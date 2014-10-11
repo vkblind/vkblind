@@ -1,11 +1,13 @@
 # coding: utf-8
 
 import time
+
 from annoying.decorators import render_to
 from vkblind.decorators import vk_api, retry_on_exception
 from vkblind.utils import prepare_item_list
 
 from requests.exceptions import ReadTimeout
+
 
 @retry_on_exception(ReadTimeout)
 @vk_api
