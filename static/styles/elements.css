@@ -1,11 +1,11 @@
-input.S {
+.S input {
     font-size: 1em;
 }
 
-input.M {
+.M input {
     font-size: 2em;
 }
 
-input.L {
+.L input {
     font-size: 2.6em;
 }
