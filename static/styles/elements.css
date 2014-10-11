@@ -1,0 +1,33 @@
+input[type=text], input[type=password] {
+    color: #000;
+    background: #fff;
+    border: 2px solid white;
+
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+
+    font-size: 1em;
+}
+
+input[type=submit] {
+    color: #fff;
+    background: #000;
+    border: 2px solid white;
+
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+
+    font-size: 1em;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+section {
+    margin: 0px;
+    padding: 0px;
+}

@@ -10,6 +10,7 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+@import url("elements.css");
 
 html {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
@@ -52,18 +53,6 @@ a:visited {
 html.white a,
 html.white a:visited {
 	color: #000;
-}
-
-input[type=text], input[type=password] {
-    color: #000;
-    background: #fff;
-    font-size: 1em;
-}
-
-input[type=submit] {
-    color: #fff;
-    background: #000;
-    font-size: 1em;
 }
 
 a:hover,
@@ -196,6 +185,11 @@ html.white hr {
     clear: both;
 }
 
+.search {
+    margin: 0px;
+    padding: 0px;
+}
+
 
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
@@ -283,6 +277,18 @@ html.white hr {
     }
 }
 
+.search {
+    padding-top: 20px;
+}
+
+.search > input[type=text] {
+    width: 80%;
+}
+
+.search > input[type=submit] {
+    width: 18%;
+    float: right;
+}
 
 /***
 CUSTOM CSS HERE
@@ -291,11 +297,6 @@ CUSTOM CSS HERE
 .auth-block {
     padding: 1em;
     text-align: center;
-}
-
-
-section {
-    margin: 1em 0.5em;
 }
 
 li h2 {

@@ -3,10 +3,10 @@
 {% load human %}
 
 {% block content %}
-<form action="{% url 'search' %}" method="post">
+<form action="{% url 'search' %}" method="post" class="search">
     {% csrf_token %}
-    <input type="text" name="query" />
-    <input type="submit" value="Найти" />
+    <input type="text" name="query" placeholder="Что будем искать?" />
+    <input type="submit" value="Найти" title="Найти" />
 </form>
 
 <ul role="directory">
