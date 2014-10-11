@@ -99,3 +99,14 @@ def save_settings(request):
 def logout(request):
     logout_user(request)
     return redirect('/')
+
+
+@vk_api
+@render_to('search.html')
+def search(request):
+    if request.method == 'POST':
+        query = request.POST['query']
+        groups = request.vk.groups.search(q=query, count=10)['items']
+        return {'groups': groups}
+    else:
+        return {'groups': []}

@@ -9,6 +9,7 @@
             <li><a href="{{ fav.url }}" aria-atomic="true"><span>{{ fav.name }}<span></a></li>
         {% endfor %}
         <li><a href="/settings" accesskey="s" aria-hidden="true"><span>Настройки</span></a></li>
+        <li><a href="{% url 'search' %}"><span>Поиск</span></a></li>
         <li><a href="/logout" accesskey="`" aria-atomic="true"><span>Выйти</span></a></li>
       </nav>
     </div>
