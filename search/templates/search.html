@@ -9,12 +9,28 @@
     <input type="submit" value="Найти" title="Найти" />
 </form>
 
-<ul role="directory">
+<ul role="groups">
+{% if groups %}
+    <h3>Группы</h3>
+{% endif %}
 {% for group in groups %}
     <li style="list-style: none">
         <a href="{% url 'view_group' group.id %}">{{ group.name|readable }}</a>
     </li>
 {% endfor %}
-<ul>
+</ul>
+
+<ul role="users">
+{% if users %}
+    <h3>Люди</h3>
+{% endif %}
+{% for user in users %}
+    <li>
+        <a href="{% url 'profile' user.id %}">
+            {{ user.last_name|readable }} {{ user.first_name|readable }}
+        </a>
+    </li>
+{% endfor %}
+</ul>
 
 {% endblock content %}
