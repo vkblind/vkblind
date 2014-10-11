@@ -8,7 +8,7 @@
         {% for fav in favorites %}
             <li><a href="{{ fav.url }}" aria-atomic="true"><span>{{ fav.name }}<span></a></li>
         {% endfor %}
-        <li><a href="{% url 'settings' }" accesskey="s" aria-hidden="true"><span>Настройки</span></a></li>
+        <li><a href="{% url 'settings' %}" accesskey="s" aria-hidden="true"><span>Настройки</span></a></li>
         <li><a href="{% url 'search' %}"><span>Поиск</span></a></li>
       </nav>
     </div>
