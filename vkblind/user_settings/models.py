@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 
 class UserSettings(models.Model):
-    user = models.OneToOneField(User, related_name='settings')
+    user = models.OneToOneField(User, related_name='site_settings')
     font_size = models.CharField(max_length=5, choices=settings.FONT_SIZES, default=settings.FONT_SIZES[0][0])
     color_scheme = models.CharField(max_length=20, choices=settings.COLOR_SCHEMES, default=settings.COLOR_SCHEMES[0][0])
 
@@ -18,4 +18,3 @@ class UserSettings(models.Model):
 
     class Meta:
         db_table = 'user_settings'
-
