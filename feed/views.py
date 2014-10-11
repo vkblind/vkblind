@@ -1,11 +1,13 @@
 # coding: utf-8
 
 import time
+
 from annoying.decorators import render_to
 from vkblind.decorators import vk_api, retry_on_exception
 from vkblind.utils import prepare_item_list
 
 from requests.exceptions import ReadTimeout
+
 
 @retry_on_exception(ReadTimeout)
 @vk_api
@@ -17,19 +19,23 @@ def view_feed(request):
     # extend owners list by user groups
     # group ids should be negative
     groups = request.vk.groups.get()
-    owners.extend(map(lambda x: x * -1, groups['items']))
+    if groups['count']:
+        owners.extend(map(lambda x: x * -1, groups['items']))
 
     # extend owners list by user friends
-    friends = request.vk.friends.get()
-    owners.extend(friends['items'])
+    friends = request.vk.friends.get(order='hints', fields='last_seen')
+    if friends['count']:
+        friends = filter(lambda friend: not 'deactivated' in friend,
+                         friends['items'])
+        friends.sort(key=lambda x: -x['last_seen']['time'])
+        owners.extend(map(lambda x: x['id'], friends))
 
     # get posts by owner
-    for owner_id in owners[:10]:
+    for owner_id in owners[:40]:
         wall = request.vk.wall.get(
             owner_id=owner_id,
         )
         items.extend(wall['items'])
-        time.sleep(0.2)
 
     # prepare items for display
     items = prepare_item_list(request.vk, items)

@@ -121,3 +121,15 @@ humanize.i18n.activate('ru_RU')
 
 APPEND_SLASH = False
 
+# user settings choices
+
+FONT_SIZES = (
+    ('L', 'large'),
+    ('M', 'medium'),
+    ('S', 'small'),
+)
+
+COLOR_SCHEMES = (
+    ('black', 'black'),
+    ('white', 'white'),
+)

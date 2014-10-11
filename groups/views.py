@@ -8,16 +8,21 @@ from vkblind.utils import get_owner, prepare_item_list
 
 from requests.exceptions import ReadTimeout
 
+
 @retry_on_exception(ReadTimeout)
 @vk_api
 @render_to('view_groups.html')
 def view_groups(request):
     """
     """
+    groups = []
     groups_info = request.vk.groups.get()
-    group_ids_str = ','.join(map(lambda x: str(x), groups_info['items']))
-    groups = request.vk.groups.getById(group_ids=group_ids_str)
+    if groups_info['count'] != 0:
+        group_ids_str = ','.join(map(lambda x: str(x), groups_info['items']))
+        groups = request.vk.groups.getById(group_ids=group_ids_str)
+
     return {'groups': groups}
+
 
 @retry_on_exception(ReadTimeout)
 @vk_api
