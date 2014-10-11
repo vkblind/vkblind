@@ -6,6 +6,7 @@ from django.contrib.auth import logout as logout_user
 from django.shortcuts import resolve_url, redirect
 from vkblind.models import Settings
 from vkblind.decorators import vk_api
+import datetime
 import pprintpp
 import vk
 
@@ -38,7 +39,7 @@ def profile(request, vkuser):
     # потому что второй отчего-то только для стэндэлона
     # alexger
 
-    account = vkapi.users.get(user_ids=uid, fields='sex, '
+    account = vkapi.users.get(user_ids=vkuser, fields='sex, '
                                                    'bdate, '
                                                    'city, '
                                                    'country, '
@@ -78,6 +79,38 @@ def profile(request, vkuser):
                                                    'about, '
                                                    'quotes')
 
+
+    monthsList = [
+        u'января',
+        u'февраля',
+        u'марта',
+        u'апреля',
+        u'мая',
+        u'июня',
+        u'июля',
+        u'августа',
+        u'сентября',
+        u'октября',
+        u'ноября',
+        u'декабря'
+    ]
+
+    try:
+        bdate = account[0]['bdate'].split('.')
+        bday = bdate[0]
+        bmonth = monthsList[int(bdate[1]) - 1]
+    except:
+        return {'account': account[0]}
+
+    try:
+        byear = bdate[2] + u' г.'
+    except:
+        byear = ''
+        
+    pprintpp.pprint(bday + ' ' + bmonth + ' ' + byear)
+    string_bdate = bday + ' ' + bmonth + ' ' + byear
+
+    account[0]['bdate'] = string_bdate
     return {'account': account[0]}
 
 @render_to('settings.html')
