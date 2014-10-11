@@ -9,6 +9,7 @@ from vkblind.decorators import vk_api
 import pprintpp
 import vk
 
+
 @vk_api
 @render_to('index.html')
 def index(request):
@@ -28,6 +29,7 @@ def index(request):
 @render_to('accounts/login.html')
 def login(request):
     return {}
+
 
 @render_to('profile.html')
 def profile(request, vkuser):
@@ -80,22 +82,30 @@ def profile(request, vkuser):
 
     return {'account': account[0]}
 
+
 @render_to('settings.html')
 def settings(request):
     return {}
 
+
 def save_settings(request):
     user = request.user
     try:
-       settings = Settings.objects.get(user=user)
+        settings = Settings.objects.get(user=user)
     except:
-       settings = Settings()
+        settings = Settings()
     settings.user = user
     settings.font_size = request.POST['font_size']
     settings.color_scheme = request.POST['color_scheme']
     settings.save()
     return redirect('../')
 
+
 def logout(request):
     logout_user(request)
     return redirect('/')
+
+
+@render_to('help_page.html')
+def help_page(request):
+    return {}
