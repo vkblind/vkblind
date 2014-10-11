@@ -3,11 +3,12 @@
 import datetime
 import re
 from string import punctuation
+from django.utils.safestring import mark_safe
 
 import humanize
 from django.template import Library
 
-from vkblind.helpers import strip_unreadable
+from vkblind.helpers import strip_unreadable, process_vk_internal_links
 
 register = Library()
 
@@ -31,4 +32,10 @@ def human_time(date):
 
 @register.filter
 def readable(text):
-    return strip_unreadable(text)
+    # отрезаем лишние юникод-символы
+    text = strip_unreadable(text)
+
+    # преобразовываем линки вида [club123|Club name]
+    text = process_vk_internal_links(text)
+
+    return mark_safe(text)

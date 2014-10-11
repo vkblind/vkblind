@@ -11,7 +11,7 @@ from requests.exceptions import ReadTimeout
 @vk_api
 @render_to('feed.html')
 def view_feed(request):
-    owners = []
+    owners = [request.vk.users.get()[0]['id']]
     items = []
 
     # extend owners list by user groups
