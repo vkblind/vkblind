@@ -2,13 +2,13 @@
   <div class="vkb-navbar vkb-navbar-fixed">
     <div>
       <nav class="navigation" role="navigation">
-        <li><a href="/feed" accesskey="n" aria-atomic="true"><span>Новости</span></a></li>
-        <li><a href="/groups" accesskey="g" aria-atomic="true"><span>Группы<span></a></li>
+        <li><a href="{% url 'view_feed' %}" accesskey="n" aria-atomic="true"><span>Новости</span></a></li>
+        <li><a href="{% url 'view_groups' %}" accesskey="g" aria-atomic="true"><span>Группы<span></a></li>
         <li><a href="{% url 'profile' user.username %}" accesskey="p" aria-atomic="true"><span>Профиль</span></a></li>
         {% for fav in favorites %}
             <li><a href="{{ fav.url }}" aria-atomic="true"><span>{{ fav.name }}<span></a></li>
         {% endfor %}
-        <li><a href="/settings" accesskey="s" aria-hidden="true"><span>Настройки</span></a></li>
+        <li><a href="{% url 'settings' %}" accesskey="s" aria-hidden="true"><span>Настройки</span></a></li>
         <li><a href="{% url 'search' %}"><span>Поиск</span></a></li>
       </nav>
     </div>

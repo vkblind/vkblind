@@ -6,5 +6,5 @@ from . import views
 
 urlpatterns = patterns('',
     url(r'^$', views.settings, name='settings'),
-    url(r'^save/$', views.save_settings, name='save_settings'),
+    url(r'^save$', views.save_settings, name='save_settings'),
 )

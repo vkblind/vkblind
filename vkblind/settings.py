@@ -118,3 +118,6 @@ USE_L10N = True
 USE_TZ = True
 
 humanize.i18n.activate('ru_RU')
+
+APPEND_SLASH = False
+

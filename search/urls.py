@@ -8,5 +8,5 @@ from views import search
 
 
 urlpatterns = patterns('',
-    url(r'^search/$', search, name='search')
+    url(r'^/?$', search, name='search')
 )

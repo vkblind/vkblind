@@ -6,5 +6,5 @@ from views import view_feed
 
 
 urlpatterns = patterns('',
-    url(r'^$', view_feed),
+    url(r'^$', view_feed, name='view_feed'),
 )

@@ -34,12 +34,3 @@ def view_group(request, group_id):
         'titles': True,
         'debug_mode': request.REQUEST.get('debug') == '1',
     }
-
-
-@retry_on_exception(ReadTimeout)
-@vk_api
-@render_to('view_groups.html')
-def search_groups(request):
-    query = request.POST['query']
-    groups = request.vk.groups.search(q=query, count=10)['items']
-    return {'groups': groups}
