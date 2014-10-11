@@ -27,7 +27,8 @@ def vk_api(func):
         request = args[0]
         if request.user.is_authenticated and not hasattr(request, 'vk'):
             request.vk = vk.API(
-                access_token=request.user.social_auth.get().tokens)
+                access_token=request.user.social_auth.get().tokens
+            )
         return func(*args, **kwgs)
 
     return wrapper

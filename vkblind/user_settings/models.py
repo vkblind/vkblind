@@ -9,8 +9,8 @@ class UserSettings(models.Model):
     font_size = models.CharField(max_length=5, choices=settings.FONT_SIZES, default=settings.FONT_SIZES[0][0])
     color_scheme = models.CharField(max_length=20, choices=settings.COLOR_SCHEMES, default=settings.COLOR_SCHEMES[0][0])
 
-    def __repr__(self):
-        return '<UserSettings: user={username}, font_size={fsize} , color_scheme={color_scheme}'.format(
+    def __unicode__(self):
+        return '<UserSettings: user={username}, font_size={fsize} , color_scheme={color_scheme}>'.format(
             username=self.user.username,
             fsize=self.font_size,
             color_scheme=self.color_scheme,
@@ -18,3 +18,4 @@ class UserSettings(models.Model):
 
     class Meta:
         db_table = 'user_settings'
+
