@@ -26,6 +26,12 @@
         <h1>{% block title %}{% endblock title %}</h1>
         {% block content %}{% endblock content %}
     </section>
+    
+    <footer>
+        {% block footer %}
+            <a href="{% url 'help_page' %}">Помощь</a>
+        {% endblock footer %}
+    </footer>
 
     <script type="text/javascript">
         var appConfig = {
