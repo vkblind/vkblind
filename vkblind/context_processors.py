@@ -1,11 +1,12 @@
-from vkblind.models import Settings
+from vkblind.user_settings.models import UserSettings
 
-def get_settings(request):
+
+def get_user_settings(request):
     try:
-        settings = Settings.objects.get(user=request.user)
+        settings = UserSettings.objects.get(user=request.user)
         font_size = settings.font_size
         color_scheme = settings.color_scheme
-    except:
+    except UserSettings.DoesNotExist:
         font_size = 'L'
         color_scheme = 'black'
     return {
@@ -14,7 +15,7 @@ def get_settings(request):
     }
 
 
-def settings(request):
+def user_settings(request):
     return {
-        'settings': get_settings(request)
+        'user_settings': get_user_settings(request)
     }

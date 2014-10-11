@@ -400,3 +400,11 @@ li h2 {
       font-size: 1em;
       padding: 0 0.5em;
   }
+
+  .footer-links {
+      margin: 1em 1em 0;
+      border-top: 1px solid #ddd;
+      padding-top: 1em;
+      text-align: center;
+      font-size: 0.7em;
+  }
