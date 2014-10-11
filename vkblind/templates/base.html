@@ -13,7 +13,13 @@
 <body>
 
     {% block header %}
-        {% include 'header.html' %}
+        {% if user.is_authenticated %}
+          {% include 'header.html' %}
+        {% else %}
+            <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/" class="auth-link" accesskey="l">
+                Войти во вконтакте
+            </a>
+        {% endif %}
     {% endblock header %}
 
     <section role = "main">
