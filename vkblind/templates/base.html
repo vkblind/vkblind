@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" class = "{{ settings.font_size }} {{ settings.color_scheme }}">
+<html lang="ru" class = "{{ user_settings.font_size }} {{ user_settings.color_scheme }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -29,7 +29,9 @@
     
     <footer>
         {% block footer %}
-            <a href="{% url 'help_page' %}">Помощь</a>
+            <div class="footer-links">
+                <a href="{% url 'help_page' %}">Помощь</a>
+            </div>
         {% endblock footer %}
     </footer>
 
