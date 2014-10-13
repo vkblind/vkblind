@@ -1,20 +1,12 @@
-from vkblind.models import Settings
+# coding: utf-8
 
-def get_settings(request):
-    try:
-        settings = Settings.objects.get(user=request.user)
-        font_size = settings.font_size
-        color_scheme = settings.color_scheme
-    except:
-        font_size = 'L'
-        color_scheme = 'black'
+from .user_settings.utils import get_user_settings
+
+
+def user_settings(request):
+    """
+    Add user_settings dict to page
+    """
     return {
-        'font_size': font_size,
-        'color_scheme': color_scheme
-    }
-
-
-def settings(request):
-    return {
-        'settings': get_settings(request)
+        'user_settings': get_user_settings(request.user)
     }

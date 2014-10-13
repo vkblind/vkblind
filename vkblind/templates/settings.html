@@ -6,7 +6,7 @@
 {% endblock title %}
 {% block content %}
 
-    <form method = "POST" action="save/">
+    <form method = "POST" action="{% url 'save_settings' %}">
     {% csrf_token %}
     <table class = "settings-table" title = 'Настройки' summary='Настройки: цветовая гамма и размер шрифта'>
         <tbody>
@@ -33,5 +33,9 @@
     </table>
     <button type="submit">Сохранить</button>
     </form>
+
+    <hr/>
+
+    <a href="{% url 'logout' %}" accesskey="`">Выйти (поменять профиль)</a>
 
 {% endblock content %}

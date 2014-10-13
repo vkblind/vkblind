@@ -185,6 +185,11 @@ html.white hr {
     clear: both;
 }
 
+.search {
+    margin: 0px;
+    padding: 0px;
+}
+
 
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
@@ -272,6 +277,18 @@ html.white hr {
     }
 }
 
+.search {
+    padding-top: 20px;
+}
+
+.search > input[type=text] {
+    width: 80%;
+}
+
+.search > input[type=submit] {
+    width: 18%;
+    float: right;
+}
 
 /***
 CUSTOM CSS HERE
@@ -383,4 +400,12 @@ li h2 {
   select {
       font-size: 1em;
       padding: 0 0.5em;
+  }
+
+  .footer-links {
+      margin: 1em 1em 0;
+      border-top: 1px solid #ddd;
+      padding-top: 1em;
+      text-align: center;
+      font-size: 0.7em;
   }

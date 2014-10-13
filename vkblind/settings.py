@@ -63,6 +63,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'vkblind',
+    'vkblind.user_settings',
+    'search',
     'groups',
     'feed',
     'ims',
@@ -80,7 +82,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'social.apps.django_app.context_processors.backends',
     'social.apps.django_app.context_processors.login_redirect',
-    'vkblind.context_processors.settings',
+    'vkblind.context_processors.user_settings',
 )
 
 
@@ -116,3 +118,18 @@ USE_L10N = True
 USE_TZ = True
 
 humanize.i18n.activate('ru_RU')
+
+APPEND_SLASH = False
+
+# user settings choices
+
+FONT_SIZES = (
+    ('L', 'large'),
+    ('M', 'medium'),
+    ('S', 'small'),
+)
+
+COLOR_SCHEMES = (
+    ('black', 'black'),
+    ('white', 'white'),
+)

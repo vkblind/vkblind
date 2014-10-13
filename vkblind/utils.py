@@ -14,7 +14,6 @@ def get_owner(vk, owner_id):
     key = OWNER_CACHE_KEY.format(owner_id)
     owner = cache.get(key)
     if owner is None:
-        time.sleep(0.2)
         if owner_id.startswith('-'):
             owner = vk.groups.getById(group_id=[owner_id[1:]])
         else:
@@ -35,6 +34,6 @@ def prepare_item_list(vk, items):
     items.sort(key=lambda x: x['date'], reverse=True)
     items = items[:30]
     items = filter(lambda x: bool(x['text'].strip()), items)
-    for item in items[:20]:
+    for item in items:
         item['owner'] = get_owner(vk, item['owner_id'])
     return items

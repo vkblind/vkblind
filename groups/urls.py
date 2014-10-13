@@ -7,5 +7,5 @@ from views import view_groups, view_group
 
 urlpatterns = patterns('',
     url(r'^$', view_groups, name='view_groups'),
-    url(r'^(\d+)/$', view_group, name='view_group'),
+    url(r'^(\d+)$', view_group, name='view_group')
 )
