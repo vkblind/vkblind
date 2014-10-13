@@ -98,7 +98,7 @@ hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 5px solid #fff;
+    border-top: 0.1em solid #fff;
     margin: 1em 0;
     padding: 0;
 }
@@ -404,7 +404,7 @@ li h2 {
 
   .footer-links {
       margin: 1em 1em 0;
-      border-top: 1px solid #ddd;
+      border-top: 0.1em solid #ddd;
       padding-top: 1em;
       text-align: center;
       font-size: 0.7em;
