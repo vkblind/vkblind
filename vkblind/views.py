@@ -108,8 +108,7 @@ def profile(request, vkuser):
         byear = bdate[2] + u' г.'
     except:
         byear = ''
-        
-    pprintpp.pprint(bday + ' ' + bmonth + ' ' + byear)
+
     string_bdate = bday + ' ' + bmonth + ' ' + byear
 
     account[0]['bdate'] = string_bdate

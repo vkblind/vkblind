@@ -28,15 +28,16 @@ html.S {
     font-size: 1em;
 }
 html.M {
-    font-size: 2em;
+    font-size: 1.6em;
 }
 html.L {
-    font-size: 2.6em;
+    font-size: 2.0em;
 }
 
 body {
-	margin: 3.2em 0 0 0;
+    height: 100%;
 	overflow-x: hidden;
+    margin: 0;
 }
 
 a,
@@ -283,8 +284,15 @@ CUSTOM CSS HERE
 
 
 section {
-    margin: 1em 0.5em;
+    margin-left: 9em;
+    min-height: 100%;
+    border-left: 0.1em white solid;
+    padding: 1em;
 }
+html.white section {
+    border-color: black;
+}
+
 
 li h2 {
     margin-bottom: 20px;
@@ -328,56 +336,45 @@ li h2 {
 
   header {
     background: black;
+    height: 100%;
     z-index: 1000;
-    position: fixed;
-    top: 0;
-
-    margin-right: 0.1em;
+    position: relative;
+    float: left;
   }
   html.white header {
     background: white;
   }
-  .vkb-navbar-fixed {
-    width: 100%;
-  }
+
   .navigation {
-    display: table;
-    table-layout: fixed;
-
-    width: 100%;
-    text-align: justify;
-
-    border-collapse: collapse;
+      margin-top: 1em;
+      width: 9em;
   }
+
   .navigation li {
-    margin: 0;
-
     list-style: none;
-
-    display: table-cell;
-    position: relative;
-
-    text-align: center;
-
-    border: 0.1em white solid;
+    border-top: 0.1em white solid;
   }
+
+  .navigation li:last-of-type {
+      border-bottom: 0.1em white solid;
+  }
+
   html.white .navigation li {
     border-color: black;
   }
   .navigation li>a {
     padding: 0;
-
     line-height: 1em;
     display: inline-block;
     height: 3em;
     width: 100%;
-
+    outline-style:none;
     text-decoration: none;
   }
   .navigation li>a>span {
     display: inline-block;
     margin-top: 1em;
-    text-transform: uppercase;
+    padding: 0 1em;
   }
 
 
