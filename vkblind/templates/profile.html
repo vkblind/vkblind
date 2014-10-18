@@ -349,8 +349,11 @@
     </table>
     {% endif %}
 
-
-
-
+    <hr>
+    <ul role="wall">
+    {% for item in wall.items %}
+        {% include 'item.html' %}
+    {% endfor %}
+    </ul>
 
 {% endblock content %}
