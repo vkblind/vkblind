@@ -17,4 +17,5 @@ def process_vk_internal_links(text):
     """
     Преобразовывает линки вида [club123|Club name]
     """
-    return re.sub(VK_INTERNAL_LINKS, r'<a href="/\1/\2">\3</a>', text)
+    result = re.sub(VK_INTERNAL_LINKS, r'<a href="/\1/\2">\3</a>', text)
+    return result

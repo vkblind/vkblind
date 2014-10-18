@@ -9,7 +9,7 @@
     <ul role="directory">
     {% for group in groups %}
         <li style="list-style: none">
-            <a href="{% url 'view_group' group.id %}">{{ group.name|readable }}</a>
+            <a href="{% url 'view_group' group.id %}">{{ group.name|safe }}</a>
         </li>
     {% endfor %}
     <ul>

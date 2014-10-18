@@ -3,7 +3,9 @@
 import datetime
 import re
 from string import punctuation
+from django.template.defaultfilters import stringfilter
 from django.utils.safestring import mark_safe
+from django.utils.html import urlize
 
 import humanize
 from django.template import Library
@@ -30,12 +32,15 @@ def human_time(date):
     return humanize.naturaltime(datetime.datetime.fromtimestamp(date))
 
 
-@register.filter
-def readable(text):
-    # отрезаем лишние юникод-символы
-    text = strip_unreadable(text)
-
-    # преобразовываем линки вида [club123|Club name]
-    text = process_vk_internal_links(text)
-
-    return mark_safe(text)
+@register.filter(is_safe=True, needs_autoescape=True)
+@stringfilter
+def process_links(value, autoescape=None):
+    """
+    Convert vk internal [club123|Club name] links as well as external links
+    into a clickable format and autoescape the rest of the text
+    """
+    return mark_safe(
+        process_vk_internal_links(
+            urlize(value, nofollow=True, autoescape=autoescape)
+        )
+    )
