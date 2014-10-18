@@ -94,16 +94,6 @@ def detect_birth_date(bdate=None):
     return birth_date_str
 
 
-def user_to_uid(vk_user):
-    """
-    Convert vk_user identifier to uid int
-
-    :type vk_user: basestring
-    :rtype: int
-    """
-    return int(vk_user.lstrip('id'))
-
-
 def retry_on_exception(exception, times=10, sleep=None):
     def decorator(func):
         @wraps(func)

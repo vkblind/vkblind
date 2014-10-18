@@ -4,16 +4,16 @@
 
 {% block content %}
 <form action="{% url 'search' %}" method="get" class="search">
-    <input type="text" name="c[q]" placeholder="Что будем искать?" />
-    <input type="hidden" name="c[section]" value="auto" />
+    <input type="text" name="q" placeholder="Что будем искать?" value="{{ query }}" />
+    <input type="hidden" name="section" value="{{ section }}" />
     <input type="submit" value="Найти" title="Найти" />
 </form>
 
 <ul role="groups">
-{% if groups %}
+{% if communities %}
     <h3>Группы</h3>
 {% endif %}
-{% for group in groups %}
+{% for group in communities %}
     <li style="list-style: none">
         <a href="{% url 'view_group' group.id %}">{{ group.name|safe }}</a>
     </li>
@@ -21,15 +21,24 @@
 </ul>
 
 <ul role="users">
-{% if users %}
+{% if people %}
     <h3>Люди</h3>
 {% endif %}
-{% for user in users %}
+{% for user in people %}
     <li style="list-style: none">
         <a href="{% url 'profile' user.id %}">
             {{ user.last_name|safe }} {{ user.first_name|safe }}
         </a>
     </li>
+{% endfor %}
+</ul>
+
+<ul role="news">
+{% if statuses %}
+    <h3>Новости</h3>
+{% endif %}
+{% for item in statuses %}
+    {% include 'item.html' %}
 {% endfor %}
 </ul>
 

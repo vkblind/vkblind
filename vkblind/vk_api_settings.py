@@ -1,5 +1,6 @@
 # coding: utf-8
 
+VK_HOST = "https://vk.com"
 
 # поля, запрашиваемые чере API вызов users.get
 VK_USER_FIELDS = [
@@ -43,3 +44,6 @@ VK_USER_FIELDS = [
     'about',
     'quotes',
 ]
+
+
+ITEMS_LIMIT = 20
