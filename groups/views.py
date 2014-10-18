@@ -3,8 +3,8 @@
 
 from annoying.decorators import render_to
 
-from vkblind.decorators import vk_api, retry_on_exception
-from vkblind.utils import get_owner, prepare_item_list
+from vkblind.decorators import vk_api
+from vkblind.utils import get_owner, prepare_item_list, retry_on_exception
 
 from requests.exceptions import ReadTimeout
 

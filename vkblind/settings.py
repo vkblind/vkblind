@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
 Django settings for vkblind project.
 
@@ -170,3 +172,5 @@ LOGGING = {
         'level': 'DEBUG',
     },
 }
+
+from .vk_api_settings import *
