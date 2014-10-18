@@ -16,4 +16,4 @@ def as_json(data, indent=None):
 @register.filter
 def format_json(value):
     """Convert dict to a formatted JSON string"""
-    return simplejson.dumps(value, sort_keys=True, indent=4, use_decimal=True)
+    return simplejson.dumps(value, sort_keys=True, indent=4, use_decimal=True, ensure_ascii=False)
