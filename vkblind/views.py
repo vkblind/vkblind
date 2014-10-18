@@ -1,11 +1,15 @@
 # coding: utf-8
 
+import logging
+
 from annoying.decorators import render_to
 from django.contrib.auth import logout as logout_user
 from django.shortcuts import redirect
 from vkblind.decorators import vk_api
 import pprintpp
 import vk
+
+logger = logging.getLogger(__name__)
 
 
 @vk_api
@@ -15,10 +19,10 @@ def index(request):
         vkapi = vk.API(access_token=request.user.social_auth.get().tokens)
 
         groups = vkapi.groups.get()
-        pprintpp.pprint(groups)
+        logger.debug(groups)
 
         wall = vkapi.wall.get(owner_id=-groups['items'][3])
-        pprintpp.pprint(wall)
+        logger.debug(wall)
     except:
         return {}
     return {}
