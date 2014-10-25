@@ -17,6 +17,7 @@ register = Library()
 
 # костыль! Через установку переменных окружения heroku не срабатывает.
 locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
+humanize.i18n.activate('ru_RU')
 
 @register.filter
 def human_datetime(date):
