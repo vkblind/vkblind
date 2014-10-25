@@ -15,8 +15,6 @@ import os
 
 import dj_database_url
 
-import humanize
-
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
@@ -90,6 +88,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -109,9 +108,9 @@ WSGI_APPLICATION = 'vkblind.wsgi.application'
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru_RU.UTF-8'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -119,9 +118,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-humanize.i18n.activate('ru_RU')
-
 APPEND_SLASH = False
+
+LANGUAGES = (
+    ('ru_RU.UTF-8', 'Russian'),
+    ('en_US.UTF-8', 'English'),
+)
 
 # user settings choices
 
